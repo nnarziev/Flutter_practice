@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -6,8 +8,27 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+  void getData() async {
+    // simulate network request for a username
+    String username = await Future.delayed(Duration(seconds: 3), () {
+      return "John";
+    });
+    //simulate network request to get bio of the username
+    String bio = await Future.delayed(Duration(seconds: 2), () {
+      return "programmer";
+    });
+    print('$username - $bio');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -16,7 +37,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Text('Choose location screen'),
     );
   }
 }
